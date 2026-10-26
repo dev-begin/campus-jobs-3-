@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Jobs - หางานพาร์ทไทม์ในมหาวิทยาลัย</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🎓 Campus Jobs</h1>
+  <div id="userbox"></div>
+</header>
+<main>
+  <!-- เข้าสู่ระบบ / สมัครสมาชิก -->
+  <section id="authView" class="card hidden">
+    <h2 id="authTitle">เข้าสู่ระบบ</h2>
+    <input id="aName" placeholder="ชื่อ" class="reg hidden">
+    <input id="aPhone" placeholder="เบอร์โทร (ไม่บังคับ)" class="reg hidden">
+    <input id="aLine" placeholder="LINE ID (ไม่บังคับ)" class="reg hidden">
+    <input id="aEmail" type="email" placeholder="อีเมล">
+    <input id="aPass" type="password" placeholder="รหัสผ่าน (6 ตัวขึ้นไป)">
+    <select id="aRole" class="reg hidden">
+      <option value="student">นักศึกษา (หางาน)</option>
+      <option value="employer">ผู้ประกอบการ/หน่วยงาน (ลงประกาศ)</option>
+    </select>
+    <button id="authBtn">เข้าสู่ระบบ</button>
+    <a href="#" id="authSwitch">ยังไม่มีบัญชี? สมัครสมาชิก</a>
+    <p id="authMsg" class="msg"></p>
+  </section>
+
+  <nav id="tabs" class="hidden"></nav>
+
+  <!-- หางาน (ทุกคนดูได้) -->
+  <section id="jobsView">
+    <div id="dateStrip" class="strip"></div>
+    <div class="filters card">
+      <input id="fQ" placeholder="🔍 ค้นหาตำแหน่ง/รายละเอียด">
+      <select id="fCat"><option value="">ทุกหมวดหมู่</option></select>
+      <input id="fPay" type="number" min="0" placeholder="ค่าตอบแทนขั้นต่ำ">
+      <input id="fFrom" type="time" title="เริ่มงานไม่ก่อน">
+      <input id="fTo" type="time" title="เลิกงานไม่เกิน">
+    </div>
+    <p id="count" class="muted"></p>
+    <ul id="jobList" class="list"></ul>
+  </section>
+
+  <!-- ใบสมัครของฉัน (นักศึกษา) -->
+  <section id="myAppsView" class="hidden"><ul id="myApps" class="list"></ul></section>
+  <section id="incomeView" class="hidden">
+    <div class="card"><b>รายได้รวมที่ยืนยันแล้ว</b><span id="incTotal" class="pay"></span></div>
+    <ul id="incList" class="list"></ul>
+  </section>
+
+  <!-- จัดการงาน (ผู้ประกอบการ) -->
+  <section id="manageView" class="hidden">
+    <form id="jobForm" class="card">
+      <h3>ลงประกาศงานใหม่</h3>
+      <input id="jTitle" placeholder="ชื่อตำแหน่ง" required>
+      <input id="jCat" list="cats" placeholder="หมวดหมู่ เช่น ร้านอาหาร" required>
+      <datalist id="cats"></datalist>
+      <input id="jPay" type="number" min="0" placeholder="ค่าตอบแทน (บาท/วัน)" required>
+      <input id="jLoc" placeholder="สถานที่">
+      <input id="jDate" type="date" required>
+      <div class="row"><input id="jStart" type="time" value="09:00"><input id="jEnd" type="time" value="17:00"></div>
+      <input id="jPos" type="number" min="1" value="1" placeholder="จำนวนที่รับ">
+      <label><input id="jAuto" type="checkbox"> สมัครแล้วรับทันที</label>
+      <textarea id="jDesc" placeholder="รายละเอียดงาน / หน้าที่"></textarea>
+      <textarea id="jReq" placeholder="คุณสมบัติผู้สมัคร เช่น อายุ 18 ปีขึ้นไป, ตรงต่อเวลา"></textarea>
+      <textarea id="jBen" placeholder="สวัสดิการ เช่น อาหารฟรี, ชุดฟรี"></textarea>
+      <input id="jPhone" placeholder="เบอร์โทรติดต่อ">
+      <input id="jLine" placeholder="LINE ID ติดต่อ">
+      <span class="muted">ต้องกรอกเบอร์โทรหรือ LINE อย่างน้อย 1 ช่องทาง (นักศึกษาที่ล็อกอินแล้วเท่านั้นที่เห็น)</span>
+      <button>ลงประกาศ</button>
+      <p id="jobMsg" class="msg"></p>
+    </form>
+    <h3>งานของฉัน</h3><ul id="myJobs" class="list"></ul>
+    <h3>ผู้สมัคร</h3><ul id="applicants" class="list"></ul>
+  </section>
+</main>
+<dialog id="jobDialog"><div id="jobDetail"></div></dialog>
+<script src="app.js"></script>
+</body>
+</html>

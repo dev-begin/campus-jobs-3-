@@ -1,0 +1,20 @@
+{
+  "name": "campus-jobs",
+  "version": "1.0.0",
+  "description": "Campus Part-Time Job Matching Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "seed": "node --disable-warning=ExperimentalWarning seed.js",
+    "test": "node --disable-warning=ExperimentalWarning test.js",
+    "reset": "node --disable-warning=ExperimentalWarning reset.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}
